@@ -1,10 +1,13 @@
-import './App.css';
+// import './App.css';
+import {Login} from './components/auth/login/login'
+import {NavBar} from '../src/components/shared/navbar'
 
 function App() {
   return (
-    <div className="App">
-    <h2 className="text-center">Welcome to School Management System</h2>
-    </div>
+    <>
+    <NavBar></NavBar>
+    <Login></Login>
+    </>
   );
 }
 

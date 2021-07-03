@@ -1,0 +1,16 @@
+#btnlogin{
+    color: white;
+    margin-left: 20px;
+    background-color: #5850ec;
+}
+
+.navItem{
+    align-items: center;
+}
+
+.navItem a{
+    margin-left: 14%;
+    display: inline-block;
+    align-items: center;
+    color: white;
+}
