@@ -17,3 +17,8 @@ export const loginfailed=(err)=>({
     paylaod: err
 })
 
+export const Login=(data)=>dispatch=>{
+    const logindetails = data;
+    dispatch(isLoading())
+}
+
