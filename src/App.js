@@ -1,13 +1,18 @@
 // import './App.css';
-import {Login} from './components/auth/login/login'
-import {NavBar} from '../src/components/shared/navbar'
+import { Login } from './components/auth/login/login'
+import { NavBar } from '../src/components/shared/navbar';
+import { Provider } from 'react-redux';
+import { store } from './store'
 
-function App() {
+export default function App() {
   return (
-    <>
-    <NavBar></NavBar>
-    <Login></Login>
-    </>
+    <Provider>
+      <div store={store}>
+        <NavBar></NavBar>
+        <Login></Login>
+      </div>
+    </Provider>
+
   );
 }
 
