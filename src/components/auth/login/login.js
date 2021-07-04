@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import './login.css'
+import { connect } from 'react-redux'
+import { LoginAction } from '../../actions/auth.action'
 
 const DefaultForm = {
     username: "",
     password: ""
 }
-export class Login extends Component {
+class login extends Component {
     constructor(props) {
         super(props)
 
@@ -21,7 +23,7 @@ export class Login extends Component {
     }
 
     handleChange = (e) => {
-        let {  name, value } = e.target
+        let { name, value } = e.target
         this.setState((prevState) => ({
             data: {
                 ...prevState.data,
@@ -35,18 +37,21 @@ export class Login extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        if(!this.validateForm("submit",null)) return
+        if (!this.validateForm("submit")) return
+        this.props.login(this.state.data);
         this.setState({
             isValid: false
         })
-        console.log(this.state);
     }
 
     validateForm = (type, name) => {
         const { error, data } = this.state;
         if (type === "submit") {
-            error.username = data.username.length >=2 ? "" : "Please provide username*"
-            error.password = data.password.length >=2 ? "" : "Please provide password*"
+            error.username = data.username ? "" : "Please provide username*"
+            error.password = data.password ? "" : "Please provide password*"
+            this.setState({
+                error
+            })
         }
         if (type === "change") {
             switch (name) {
@@ -68,22 +73,21 @@ export class Login extends Component {
                 default:
                     break;
             }
-        }
-
-        this.setState((prevState) => ({
-            error: {
-                ...prevState.error,
-                error
+            this.setState((prevState) => ({
+                ...prevState,
+                error // error ma save vai sakeko huncha tei sidhai error lai save gareko 
             }
-        }))
-
+            ))
+        }
         const errors = Object.values(error)
             .filter(err => err)
         this.setState({
             isValid: errors.length === 0
         })
-        if (!errors.length === 0) return false
-        return true
+        console.log("arrya", errors)
+        console.log("length", errors.length)
+        if (errors.length === 0) return true
+        return false
     }
 
     render() {
@@ -98,7 +102,7 @@ export class Login extends Component {
                             <input type="text" name="username" placeholder="Username/email" onChange={this.handleChange} className="align-center bg-light text-center form-control"></input>
                             <p>{this.state.error.username}</p>
                             <label className="form-label text-center" ><strong>Password</strong></label>
-                            <input type="text" name="password" placeholder="Password" onChange={this.handleChange} className="align-center bg-light text-center form-control"></input>
+                            <input type="password" name="password" placeholder="Password" onChange={this.handleChange} className="align-center bg-light text-center form-control"></input>
                             <p>{this.state.error.password}</p>
                             <input type="checkbox" className="" ></input>
                             <label className="form-label">&nbsp;Remember Me</label>
@@ -114,3 +118,14 @@ export class Login extends Component {
         )
     }
 }
+
+const MapStateToProps = rootState => ({
+    user: rootState.users.user,
+    isLoading: rootState.users.isLoading
+})
+
+const MapDispatchToProps = dispatch => ({
+    login: (data) => dispatch(LoginAction(data))
+})
+
+export const Login = connect(MapStateToProps, MapDispatchToProps)(login)
