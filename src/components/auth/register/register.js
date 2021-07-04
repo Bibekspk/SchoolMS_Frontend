@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { httpClient } from "../../../utilities/httpClient";
 import './register.css'
 
 const defaultForm = {
@@ -24,6 +25,7 @@ export class Register extends Component {
             }
         }
     }
+
 
     validateForm = (type, name) => {
         const errmsg = "required field*"
@@ -111,6 +113,14 @@ export class Register extends Component {
             return
         }
         console.log("this.state>>",this.state);
+        httpClient.POST("/register",this.state.userDetails,true)
+            .then(response=>{
+                console.log("response>>>>",response)
+            })
+            .catch(err=>{
+                console.log("error>>>",err)
+            })
+
     }
 
     handleChange = (e) => {
