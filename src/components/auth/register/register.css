@@ -1,0 +1,14 @@
+.registerform .input{
+    width:100%; 
+    box-sizing:border-box;
+}
+.registerform{
+    background-color: #f2f2f2
+}
+.registerform{
+    font-size: 100%;
+}
+.registerform label{
+    display: inline-block;
+    width:100%;
+}
