@@ -98,15 +98,17 @@ class login extends Component {
                     <h2 className="mt-2 header">Login</h2>
                     <div className="card pl-4 pr-4 pt-2">
                         <form className="form-group" onSubmit={this.handleSubmit}>
-                            <label className="form-label text-center" ><strong>Username</strong></label>
+                            <label className="label form-label" ><strong>Username</strong></label>
                             <input type="text" name="username" placeholder="Username/email" onChange={this.handleChange} className="align-center bg-light text-center form-control"></input>
                             <p>{this.state.error.username}</p>
-                            <label className="form-label text-center" ><strong>Password</strong></label>
+                            <label className="label form-label" ><strong>Password</strong></label>
                             <input type="password" name="password" placeholder="Password" onChange={this.handleChange} className="align-center bg-light text-center form-control"></input>
                             <p>{this.state.error.password}</p>
                             <input type="checkbox" className="" ></input>
-                            <label className="form-label">&nbsp;Remember Me</label>
-                            <p><a href="/">Forgot Password ? </a></p>
+                            <label >&nbsp;Remember Me</label><br></br>
+                            <a href="/">Forgot Password ? </a>
+                            <a className="float-right" href="/register"> Register Here</a>
+                            <hr></hr>
                             <button className="btn btn-primary">Login</button>
 
                         </form>
