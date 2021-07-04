@@ -6,11 +6,11 @@ import { store } from './store'
 
 export default function App() {
   return (
-    <Provider>
-      <div store={store}>
+    <Provider store={store}>
+      <>
         <NavBar></NavBar>
         <Login></Login>
-      </div>
+      </>
     </Provider>
 
   );
