@@ -9,4 +9,4 @@ const intialStore={
     }
 }
 
-export const store = createStore(combinedReducers,intialStore,applyMiddleware([...middleware]))
+export const store = createStore(combinedReducers,intialStore,applyMiddleware(...middleware))
