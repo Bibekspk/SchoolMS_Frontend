@@ -17,3 +17,18 @@
 .row p{
     color: red;
 }
+
+.label{
+    display: block;
+    text-align: center;
+}
+
+.row a{
+    text-decoration:none;
+    color: black;
+}
+
+.row a:hover{
+    color: blue;
+    font-size: 17px;
+}

@@ -5,7 +5,9 @@ import {combinedReducers} from './components/reducers/index.reducer'
 let middleware = [thunk]
 
 const intialStore={
-    user:{
+    users:{
+        isLoading: false,
+        user : {}
     }
 }
 
