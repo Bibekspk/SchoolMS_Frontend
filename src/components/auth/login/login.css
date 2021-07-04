@@ -1,0 +1,19 @@
+/* .text{
+    padding-left:14%;
+    padding-right: ;
+} */
+
+.btn{
+    display: block;
+    width: 100%;
+}
+
+.header{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.row p{
+    color: red;
+}
