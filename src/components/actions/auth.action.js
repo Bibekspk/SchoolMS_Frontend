@@ -24,9 +24,8 @@ export const LoginAction = (data) => dispatch => {
     httpClient.POST('/login', data, false, null)
         .then((response) => {
             console.log("inside action")
-
             dispatch(loginSucess(data))
-            console.log("data");
+            console.log(data);
         })
         .catch((err) => {
             dispatch(loginfailed(err))
