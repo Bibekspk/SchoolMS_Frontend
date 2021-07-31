@@ -12,7 +12,7 @@ export const NavBar = (props) => {
                     <Nav className="mr-auto ml-4">
                         <Nav.Link  href="#features">Home</Nav.Link>
                         <Nav.Link href="#pricing">Contact</Nav.Link>
-                        <Nav.Link active href="#contact">About</Nav.Link>
+                        <Nav.Link  href="#contact">About</Nav.Link>
                     </Nav>
                     <Nav>
                         <button className="btn btn-primary">Login</button>
