@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import { httpClient } from "../../../utilities/httpClient";
 import './register.css'
 
@@ -13,7 +14,7 @@ const defaultForm = {
     mail: '',
     gender: ''
 }
-export class Register extends Component {
+ class RegisterComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -186,3 +187,12 @@ export class Register extends Component {
         )
     }
 }
+
+mapStateToProps=()=>{
+
+}
+mapDispatchToProps = (dispatch) => {
+    
+}
+
+export const Register = connect(mapStateToProps,mapDispatchToProps)(RegisterComponent)
