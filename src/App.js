@@ -12,7 +12,6 @@ export default function App() {
     <Provider store={store}>
       <>
         <AppRouting></AppRouting>
-
       </>
     </Provider>
 
