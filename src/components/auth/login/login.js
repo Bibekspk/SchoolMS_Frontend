@@ -38,7 +38,7 @@ class login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if (!this.validateForm("submit")) return
-        this.props.login(this.state.data);
+        this.props.login(this.state.data,this.props)
         this.setState({
             isValid: false
         })
@@ -127,7 +127,7 @@ const MapStateToProps = rootState => ({
 })
 
 const MapDispatchToProps = dispatch => ({
-    login: (data) => dispatch(LoginAction(data))
+    login: (data,props) => dispatch(LoginAction(data,props))
 })
 
 export const Login = connect(MapStateToProps, MapDispatchToProps)(login)
