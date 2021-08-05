@@ -1,6 +1,7 @@
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { Login } from './components/auth/login/login';
-import { Register } from './components/auth/register/register'
+import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom';
+import {Login} from './components/auth/login/login';
+import {Register} from './components/auth/register/register'
+import { AddStudent } from './components/students/AddStudents/addStudents';
 import { NavBar } from './components/shared/navbar';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
@@ -80,6 +81,7 @@ export const AppRouting = () => {
                 <AuthRoute path='/login'  component={Login}></AuthRoute>
                 <AuthRoute path='/register' component={Register}></AuthRoute>
                 <ProtectedRoute path="/" exact component={Home}></ProtectedRoute>
+                <PublicRoute path="/student/addStudent" component={AddStudent}></PublicRoute>
                 <PublicRoute component={Error}></PublicRoute>
                 
             </Switch>
