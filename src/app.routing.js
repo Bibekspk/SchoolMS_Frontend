@@ -8,18 +8,15 @@ import { NavBar } from './components/shared/navbar';
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
         <Route
-            {...rest} // rest is for eveything rather than component like exact, path of route
-            render={(routeProps) => { //routeProps is the props of route location, match and history
-                //Notice that we’re using render prop instead of the children element 
-                //The reason for this is because render allows us to re-check if the user is authenticated every time the Route matches.
-                // If instead we used the children element, React Router would only ever see the initial state of localstorage token.
+            {...rest} 
+            render={(routeProps) => { 
+              
                 return (
                     localStorage.getItem("token")
                         ? <div>
                          <NavBar></NavBar>
                           <Component {...routeProps}></Component>                              
                         
-                            {/* we are passing the routeProps it in component for its use */}
                         </div>
                         : <Redirect to='/login' ></Redirect>
                 )
