@@ -83,7 +83,7 @@ export const AppRouting = () => {
                 <AuthRoute path='/register' component={Register}></AuthRoute>
                 <ProtectedRoute path="/" exact component={Home}></ProtectedRoute>
                 <ProtectedRoute path="/studentList" component={Studentcomponent}></ProtectedRoute>
-                <PublicRoute path="/student/addStudent" component={AddStudent}></PublicRoute>
+                <PublicRoute path="/addStudent" component={AddStudent}></PublicRoute>
                 <PublicRoute component={Error}></PublicRoute>
                 
             </Switch>
