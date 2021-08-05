@@ -11,10 +11,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <>
-        <NavBar></NavBar>
         <AppRouting></AppRouting>
-        {/* <Login></Login> */}
-        {/* <Register></Register> */}
       </>
     </Provider>
 

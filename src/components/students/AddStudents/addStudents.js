@@ -10,7 +10,7 @@ export class AddStudent extends Component{
     }
     render(){
         return(
-            <StudentsForm></StudentsForm>
+            <StudentsForm mode="Add"></StudentsForm>
         )
     }
 }

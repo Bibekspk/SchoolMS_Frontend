@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { httpClient } from "../../../utilities/httpClient";
+import { RegisterAction } from "../../actions/auth.action";
 import './register.css'
 
 const defaultForm = {
@@ -114,13 +115,15 @@ const defaultForm = {
             return
         }
         console.log("this.state>>",this.state);
-        httpClient.POST("/register",this.state.userDetails,true)
-            .then(response=>{
-                console.log("response>>>>",response)
-            })
-            .catch(err=>{
-                console.log("error>>>",err)
-            })
+        console.log("this.props>>",this.props);
+        this.props.register(this.state.userDetails)
+        // httpClient.POST("/register",this.state.userDetails,true)
+        //     .then(response=>{
+        //         console.log("response>>>>",response)
+        //     })
+        //     .catch(err=>{
+        //         console.log("error>>>",err)
+        //     })
 
     }
 
@@ -188,11 +191,15 @@ const defaultForm = {
     }
 }
 
-mapStateToProps=()=>{
-
+const mapStateToProps=(rootState)=>{
+    return {
+        user : rootState.users.user
+    }
 }
-mapDispatchToProps = (dispatch) => {
-    
+const mapDispatchToProps = (dispatch) => {
+    return {
+        register : (data)=> dispatch(RegisterAction(data))
+    }
 }
 
 export const Register = connect(mapStateToProps,mapDispatchToProps)(RegisterComponent)

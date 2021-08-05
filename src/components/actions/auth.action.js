@@ -29,22 +29,26 @@ export const registerfailed = (err) => ({
     payload: err
 })
 
-export const LoginAction = (data) => dispatch => {
+export const LoginAction = (data,props) => dispatch => {
     dispatch(isLoading());
     httpClient.POST('/login', data, false, null)
         .then((response) => {
             console.log("inside action")
-            dispatch(loginSucess(response.data))
-            console.log("data");
+            console.log(response.data.user);
+            localStorage.setItem("user",JSON.stringify(response.data.user))
+            localStorage.setItem("token",response.data.token)
+            dispatch(loginSucess(response.data.user));
+            console.log(props);
+            props.history.push('/');
+
         })
         .catch((err) => {
             dispatch(loginfailed(err))
             console.log(err);
         })
 }
-export const RegisterAction = (data) = dispatch => {
+export const RegisterAction = (data) => dispatch => {
     dispatch(isLoading());
-
     httpClient.POST('/register',data)
                 .then((response)=>{
                     dispatch(registersuccess(response.data))
