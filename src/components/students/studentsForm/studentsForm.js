@@ -9,7 +9,8 @@ const defaultForm = {
     mothersName: "",
     contact: "",
     gender: "",
-    dob: ""
+    dob: "",
+    class: ""
 }
 
 export class StudentsForm extends Component {
@@ -65,8 +66,15 @@ export class StudentsForm extends Component {
                     <input className="form-control" type="text" name="mothersName" placeholder="mothersName" onChange={this.handleChange} required></input>
                     <label htmlFor="contact">Contact</label>
                     <input className="form-control" type="text" name="contact" placeholder="contact" onChange={this.handleChange} required></input>
+                    <label htmlFor="class">Class</label>
+                    <input type="date" name="class" placeholder="class" onChange={this.handleChange} required></input>
                     <label htmlFor="gender">Gender</label>
-
+                    <select required>
+                        <option value="">Select Type</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="RatherNotSay">Rather Not Say</option>
+                    </select>
                     <label htmlFor="dob">Date of birth</label>
                     <input type="date" name="dob" placeholder="dob" onChange={this.handleChange} required></input>
                     <br></br>
