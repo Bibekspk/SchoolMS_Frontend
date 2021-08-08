@@ -17,6 +17,10 @@ export class Studentcomponent extends Component {
         }
     }
 
+    componentDidMount(){
+        
+    }
+
     handleChange = (e) => {
         let { name, value } = e.target
         this.setState((prevState) => ({
