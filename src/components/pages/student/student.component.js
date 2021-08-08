@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './student.component.css'
 
 const form = {
     date: "",
@@ -18,7 +19,7 @@ export class Studentcomponent extends Component {
     }
 
     componentDidMount(){
-        
+
     }
 
     handleChange = (e) => {
@@ -36,9 +37,9 @@ export class Studentcomponent extends Component {
     render() {
         let { data } = this.state;
         return (
-            <div className="ml-1">
+            <div className="ml-1 col-md-12 col-sm-12 col-xs-12 studentlist">
                 <h2>Student List</h2>
-                <p><strong>Please select the date and class for student details</strong></p>
+                {/* <p><strong>Please select the date and class for student details</strong></p> */}
                 <label htmlFor="date"><strong>&nbsp;&nbsp;Date : &nbsp;</strong></label>
                 <input type="date" name="date" id="date" value={data.date} onChange={this.handleChange} placeholder="Select Date"></input>
                 <label><strong>&nbsp;Class : &nbsp;</strong></label>
