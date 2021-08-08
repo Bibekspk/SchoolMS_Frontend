@@ -3,7 +3,7 @@ import { httpClient } from "../../../utilities/httpClient";
 
 const defaultForm = {
     fullname: "",
-    username: "",
+    address: "",
     email: "",
     fathersName: "",
     mothersName: "",
@@ -55,8 +55,8 @@ export class StudentsForm extends Component {
                 <form className="col-md-12 form-group registerform" onSubmit={this.handleSubmit}>
                     <label htmlFor="fullname">Full name</label>
                     <input className="form-control" type="text" name="fullname" placeholder="fullname" onChange={this.handleChange} required></input>
-                    <label htmlFor="username">Username</label>
-                    <input className="form-control" type="text" name="username" placeholder="username" onChange={this.handleChange} required></input>
+                    <label htmlFor="address">address</label>
+                    <input className="form-control" type="text" name="address" placeholder="address" onChange={this.handleChange} required></input>
                     <label htmlFor="email">Email</label>
                     <input className="form-control" type="text" name="email" placeholder="email" onChange={this.handleChange} required></input>
                     <label htmlFor="fathersName">Father's Name</label>
