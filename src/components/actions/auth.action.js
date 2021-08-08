@@ -30,15 +30,12 @@ export const registerfailed = (err) => ({
 })
 
 export const LoginAction = (data,props) => dispatch => {
-    dispatch(isLoading());
+    dispatch(isLoading);
     httpClient.POST('/login', data, false, null)
         .then((response) => {
-            console.log("inside action")
-            console.log(response.data.user);
             localStorage.setItem("user",JSON.stringify(response.data.user))
             localStorage.setItem("token",response.data.token)
             dispatch(loginSucess(response.data.user));
-            console.log(props);
             props.history.push('/');
 
         })
@@ -48,7 +45,7 @@ export const LoginAction = (data,props) => dispatch => {
         })
 }
 export const RegisterAction = (data) => dispatch => {
-    dispatch(isLoading());
+    dispatch(isLoading);
     httpClient.POST('/register',data)
                 .then((response)=>{
                     dispatch(registersuccess(response.data))
