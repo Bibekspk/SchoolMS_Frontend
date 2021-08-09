@@ -1,8 +1,7 @@
 import {StudentConstants} from '../actions/student.action';
 
 export const StudentReducers =(state,action)=>{
-    console.log("insdie reducers",state);
-    console.log("insdie action",action.payload);
+
         switch(action.type){
             case StudentConstants.IS_LOADING:
                 return {
@@ -10,7 +9,6 @@ export const StudentReducers =(state,action)=>{
                     isLoading : true
                 }
             case StudentConstants.ADDSTUDENT_SUCCESS:
-                console.log("helloooo>>>",action.payload)
                 return {
                     ...state,
                     students : action.payload,

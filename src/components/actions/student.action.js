@@ -22,10 +22,9 @@ export const addStudentFailure =(error)=>({
 })
 
 export const GetStudent=(params)=>dispatch=>{
-    dispatch(isLoading);
+    dispatch(isLoading());
     httpClient.GET('/student/students',true,params)
         .then((response)=>{
-            console.log("dispatched get student")
             dispatch(addStudentSuccess(response.data.students))
         })
         .catch((error)=>{

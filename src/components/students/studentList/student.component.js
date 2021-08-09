@@ -22,8 +22,8 @@ export class Studentcomponent extends Component {
     }
 
     componentDidMount() {
-        let { pageNumber, pageCount } = this.state;
-        this.props.getStudentList({ pageCount, pageNumber })
+        let { pageNumber, pageCount, data } = this.state;
+        this.props.getStudentList({ pageCount, pageNumber, class:data.class })
     }
 
     orderByClass = () => {
@@ -48,18 +48,20 @@ export class Studentcomponent extends Component {
 
     handleChange = (e) => {
         let { name, value } = e.target
+        let {pageCount, pageNumber ,data} = this.state;
         this.setState((prevState) => ({
             data: {
                 ...prevState.data,
                 [name]: value
             }
         }), () => {
+            this.props.getStudentList({pageCount,pageNumber,class: this.state.data.class})
             this.orderByClass()
         })
     }
 
     handlePage = (type) => {
-        let { pageNumber, pageCount } = this.state
+        let { pageNumber, pageCount,data} = this.state
         if (type === "Previous") {
             pageNumber = pageNumber - 1
         }
@@ -69,14 +71,14 @@ export class Studentcomponent extends Component {
         this.setState({
             pageNumber
         }, () => {
-            this.props.getStudentList({ pageNumber, pageCount })
+            this.props.getStudentList({ pageNumber, pageCount,class: data.class })
             this.orderByClass()
         })
     }
 
     render() {
-        let { data, pageNumber,students } = this.state;
-        let studentList = data.class ? students : this.props.student
+        let { data, pageNumber } = this.state;
+        let studentList =  this.props.student
         return (
             <div>
                 <div className="ml-1 col-md-12 col-sm-12 col-xs-12 studentlist">
@@ -111,7 +113,7 @@ export class Studentcomponent extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {
+                                        { !this.props.isLoading &&
                                             (studentList || []).map((student, index) => (
                                                 <tr key={index}>
                                                     <td className="text-center">{student.fullname}</td>
@@ -119,8 +121,8 @@ export class Studentcomponent extends Component {
                                                     <td className="text-center">{student.contact}</td>
                                                     <td className="text-center">{student.address}</td>
                                                     <td className="text-center">
-                                                    <i onClick={()=>this.handleDelete(student)} title="Delete Student" style={{fontSize:"25px", color: "red",marginRight:"8px"}} class="fas fa-trash"></i>
-                                                    <i onClick={()=>this.handleEdit(student)} title="Edit Student" style={{fontSize:"25px", color: "green"}} class="far fa-edit"></i>
+                                                    <i onClick={()=>this.handleDelete(student)} title="Delete Student" style={{fontSize:"25px", color: "red",marginRight:"8px"}} className="fas fa-trash"></i>
+                                                    <i onClick={()=>this.handleEdit(student)} title="Edit Student" style={{fontSize:"25px", color: "green"}} className="far fa-edit"></i>
                                                     </td>
                                                 </tr>
                                             ))
@@ -143,7 +145,8 @@ export class Studentcomponent extends Component {
 
 const MapStateToProps = rootStore => ({
     user: rootStore.users.user,
-    student: rootStore.students.students
+    student: rootStore.students.students,
+    loading : rootStore.students.isLoading
 
 })
 

@@ -1,7 +1,6 @@
 import { AuthConstants } from "../actions/auth.action"
 
 export const AuthReducers = (state,action)=>{
-    console.log("insdie  auth reducers",state);
 
     switch(action.type){
         case AuthConstants.IS_LOADING:
