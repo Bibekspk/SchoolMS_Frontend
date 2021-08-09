@@ -1,0 +1,14 @@
+#class{
+    width: 40%;
+    border-radius: 5px;
+    height: 35px;
+    border-color: darkgrey;
+}
+
+.studentlist h2{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 900;
+    color: darkblue;
+    
+}
+

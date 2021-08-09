@@ -1,14 +1,18 @@
-import {createStore,applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import {combinedReducers} from './components/reducers/index.reducer'
+import { combinedReducers } from './components/reducers/index.reducer'
 
 let middleware = [thunk]
 
-const intialStore={
-    users:{
+const intialStore = {
+    users: {
         isLoading: false,
-        user : {}
+        user: {}
+    },
+    students: {
+        students: [],
+        isLoading: false
     }
 }
 
-export const store = createStore(combinedReducers,intialStore,applyMiddleware(...middleware))
+export const store = createStore(combinedReducers, intialStore, applyMiddleware(...middleware))

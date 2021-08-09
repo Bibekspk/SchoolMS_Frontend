@@ -31,7 +31,6 @@ class login extends Component {
             }
         }), () => {
             this.validateForm('change', name)
-            console.log(this.state)
         })
 
     }
@@ -84,8 +83,7 @@ class login extends Component {
         this.setState({
             isValid: errors.length === 0
         })
-        console.log("arrya", errors)
-        console.log("length", errors.length)
+
         if (errors.length === 0) return true
         return false
     }
