@@ -48,7 +48,7 @@ export class Studentcomponent extends Component {
 
     handleChange = (e) => {
         let { name, value } = e.target
-        let {pageCount, pageNumber ,data} = this.state;
+        let {pageCount, pageNumber} = this.state;
         this.setState((prevState) => ({
             data: {
                 ...prevState.data,
