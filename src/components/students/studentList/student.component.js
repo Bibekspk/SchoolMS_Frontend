@@ -36,6 +36,16 @@ export class Studentcomponent extends Component {
         })
     }
 
+    handleDelete=(student)=>{
+       let confirm = window.confirm(`Do you want to delete ${student.fullname} from system?`)
+
+    }
+
+    handleEdit=(student)=>{
+       let confirm = window.confirm(`Do you want to edit ${student.fullname} details of the system?`)
+
+    }
+
     handleChange = (e) => {
         let { name, value } = e.target
         this.setState((prevState) => ({
@@ -93,19 +103,25 @@ export class Studentcomponent extends Component {
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Student ID</th>
-                                            <th>Student ID</th>
-                                            <th>Student ID</th>
-                                            <th>Student ID</th>
-                                            <th>Student ID</th>
+                                            <th className="text-center">Student Name</th>
+                                            <th className="text-center">Student Class</th>
+                                            <th className="text-center">Guardian Contact</th>
+                                            <th className="text-center">Address</th>
+                                            <th className="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {
                                             (studentList || []).map((student, index) => (
                                                 <tr key={index}>
-                                                    <td>{student.fullname}</td>
-                                                    <td>{student.class}</td>
+                                                    <td className="text-center">{student.fullname}</td>
+                                                    <td className="text-center">{student.class}</td>
+                                                    <td className="text-center">{student.contact}</td>
+                                                    <td className="text-center">{student.address}</td>
+                                                    <td className="text-center">
+                                                    <i onClick={()=>this.handleDelete(student)} title="Delete Student" style={{fontSize:"25px", color: "red",marginRight:"8px"}} class="fas fa-trash"></i>
+                                                    <i onClick={()=>this.handleEdit(student)} title="Edit Student" style={{fontSize:"25px", color: "green"}} class="far fa-edit"></i>
+                                                    </td>
                                                 </tr>
                                             ))
                                         }
