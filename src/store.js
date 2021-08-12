@@ -11,7 +11,8 @@ const intialStore = {
     },
     students: {
         students: [],
-        isLoading: false
+        isLoading: false,
+        student: {}
     }
 }
 

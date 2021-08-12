@@ -43,6 +43,8 @@ export class Studentcomponent extends Component {
 
     handleEdit=(student)=>{
        let confirm = window.confirm(`Do you want to edit ${student.fullname} details of the system?`)
+       if(!confirm) return 
+       this.props.history.push(`/editStudent/${student._id}`)
 
     }
 
