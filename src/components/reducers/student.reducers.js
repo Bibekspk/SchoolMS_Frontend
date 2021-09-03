@@ -15,6 +15,18 @@ export const StudentReducers = (state, action) => {
                 isLoading: false
             }
 
+        case StudentConstants.EDIT_STUDENT_SUCCESS:
+            return {
+                ...state,
+                student: action.payload,
+                isLoading: false
+            }
+        case StudentConstants.EDIT_STUDENT_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isLoading: false
+            }
         case StudentConstants.ADDSTUDENT_FAILURE:
             return {
                 ...state,
@@ -23,9 +35,9 @@ export const StudentReducers = (state, action) => {
             }
         case StudentConstants.GETONESTUDENT_SUCCESS:
             return {
-                ...state,
-                isLoading: false,
-                student: action.payload
+                ...state,  
+                student: action.payload,
+                isLoading: false
             }
         case StudentConstants.GETONESTUDENT_FAILURE:
             return {

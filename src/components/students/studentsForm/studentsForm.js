@@ -27,8 +27,9 @@ export class StudentsForm extends Component {
     }
 
     componentDidMount() {
-        let { studentData } = this.props
-        if (this.props.studentData) {
+        console.log(this.props.studentData);
+        const { studentData } = this.props
+        if (studentData) {
             this.setState({
                 userDetails: {
                     ...defaultForm,
@@ -47,7 +48,7 @@ export class StudentsForm extends Component {
         const { userDetails } = this.state;
         this.setState((prevState) => ({
             userDetails: {
-                ...prevState.userDetails,
+                ...userDetails,
                 [name]: value
             }
         }))

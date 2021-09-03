@@ -18,15 +18,14 @@ export class EditStudentsComponent extends Component {
     }
 
     handleEdit = (data) => {
-        console.log("inside edit", data);
-        console.log("props", this.props);
         this.props.editStudent(data, this.id,this.props.history)     
     }
 
 
     render() {
-        let content =
-            <div>
+        let content =this.state.isLoading
+        ? <p>Loading..</p>
+        :    <div>
                 <StudentsForm
                     mode="Edit"
                     studentData={this.props.student}
