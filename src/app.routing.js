@@ -75,7 +75,7 @@ const Error =()=>{
 
 export const AppRouting = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter >
             <Switch>
                 <AuthRoute path='/login'  component={Login}></AuthRoute>
                 <AuthRoute path='/register' component={Register}></AuthRoute>
