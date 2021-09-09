@@ -4,6 +4,7 @@ import { Register } from './components/auth/register/register'
 import { StudentListComponent } from './components/students/studentList/student.component';
 import { AddStudent } from './components/students/AddStudents/addStudents';
 import { NavBar } from './components/shared/navbar';
+import { EditStudents } from './components/students/editStudentsDetails/editStudentsDetails';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
@@ -74,12 +75,13 @@ const Error =()=>{
 
 export const AppRouting = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter >
             <Switch>
                 <AuthRoute path='/login'  component={Login}></AuthRoute>
                 <AuthRoute path='/register' component={Register}></AuthRoute>
                 <ProtectedRoute path="/" exact component={Home}></ProtectedRoute>
                 <ProtectedRoute path="/studentList" component={StudentListComponent}></ProtectedRoute>
+                <ProtectedRoute path="/editStudent/:id" component={EditStudents}></ProtectedRoute>
                 <PublicRoute path="/addStudent" component={AddStudent}></PublicRoute>
                 <PublicRoute component={Error}></PublicRoute>
                 

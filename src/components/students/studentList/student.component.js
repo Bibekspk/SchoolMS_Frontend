@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './student.component.css'
 import { connect } from 'react-redux';
-import { GetStudent } from '../../actions/student.action';
+import { GetOneStudent, GetStudent } from '../../actions/student.action';
 
 const form = {
     class: ""
@@ -43,6 +43,9 @@ export class Studentcomponent extends Component {
 
     handleEdit=(student)=>{
        let confirm = window.confirm(`Do you want to edit ${student.fullname} details of the system?`)
+       if(!confirm) return 
+       this.props.editStudent(student._id, this.props.history);
+    //    this.props.history.push(`/editStudent/${student._id}`)
 
     }
 
@@ -151,7 +154,8 @@ const MapStateToProps = rootStore => ({
 })
 
 const MapDispatchToProps = dispatch => ({
-    getStudentList: (data) => dispatch(GetStudent(data))
+    getStudentList: (data) => dispatch(GetStudent(data)),
+    editStudent : (id,history) => dispatch(GetOneStudent(id,history))
 })
 
 
