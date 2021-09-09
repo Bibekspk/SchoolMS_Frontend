@@ -5,6 +5,7 @@ import { StudentListComponent } from './components/students/studentList/student.
 import { AddStudent } from './components/students/AddStudents/addStudents';
 import { NavBar } from './components/shared/navbar';
 import { EditStudents } from './components/students/editStudentsDetails/editStudentsDetails';
+import { SideBar } from './components/shared/sidebar/sidebar';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
@@ -16,8 +17,9 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
                     localStorage.getItem("token")
                         ? <div>
                          <NavBar></NavBar>
+                         <SideBar>
                           <Component {...routeProps}></Component>                              
-                        
+                          </SideBar>
                         </div>
                         : <Redirect to='/login' ></Redirect>
                 )

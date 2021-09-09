@@ -83,8 +83,8 @@ export class Studentcomponent extends Component {
         let { data, pageNumber } = this.state;
         let studentList =  this.props.student
         return (
-            <div>
-                <div className="ml-1 col-md-12 col-sm-12 col-xs-12 studentlist">
+            <div className="">
+                <div className="ml-1 studentlist col-md-12 col-sm-12">
                     <h2>Student List</h2>
                     <form className="col-md-12 form-group" >
                         <select name="class" id="class" value={data.class} onChange={this.handleChange} >
@@ -104,8 +104,8 @@ export class Studentcomponent extends Component {
                             <option value="10"> 10</option>
                         </select>
                     </form>
-                            <>
-                                <table className="table table-striped">
+                            <div className="tablediv">
+                                <table className="table table-striped ">
                                     <thead>
                                         <tr>
                                             <th className="text-center">Student Name</th>
@@ -132,7 +132,7 @@ export class Studentcomponent extends Component {
                                         }
                                     </tbody>
                                 </table>
-                            </>
+                            </div>
                     <br></br>
                     {
                         pageNumber > 1 &&

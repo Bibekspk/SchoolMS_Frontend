@@ -1,0 +1,91 @@
+* {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  background: #f5f6fa;
+}
+
+.wrapper .sidebar {
+  background: rgb(5, 68, 104);
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  left: 0;
+  width: 225px;
+  height: 100%;
+  padding: 20px 0;
+  transition: all 0.5s ease;
+}
+
+.wrapper .sidebar .profile {
+  position: relative;
+  left: -10%;
+}
+
+.wrapper .sidebar .profile img {
+  height: 30%;
+  width: 30%;
+}
+
+.wrapper .sidebar .profile h4 {
+  color: white;
+  position: relative;
+  left: 25%;
+}
+
+.wrapper .sidebar .profile p {
+  color: white;
+}
+
+.wrapper .sidebar ul {
+  margin-top: 22%;
+}
+
+.wrapper .sidebar ul li a {
+  display: block;
+  padding: 13px 30px;
+  border-bottom: 1px solid #106a8d;
+  color: rgb(241, 237, 237);
+  font-size: 16px;
+  position: relative;
+}
+
+.wrapper .sidebar ul li a .icon {
+  color: #dee4ec;
+  width: 30px;
+  display: inline-block;
+}
+
+.sidebarActive {
+  background-color: brown;
+}
+
+@media screen and (max-width: 411px) {
+  .wrapper .sidebar a {
+    text-align: center;
+    float: none;
+  }
+  div.content {
+    margin-left: 0;
+    position: relative;
+    top: 0%;
+  }
+}
+
+@media screen and (max-width: 411px) {
+  .wrapper .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+   .sidebar a {
+    float: left;
+  }
+  
+}

@@ -8,7 +8,9 @@
 .studentlist h2{
     font-family: 'Roboto Slab', serif;
     font-weight: 900;
-    color: darkblue;
-    
+    color: darkblue;  
+}
+.tablediv{
+    overflow-x: auto;
 }
 
