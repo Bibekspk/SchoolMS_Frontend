@@ -44,7 +44,7 @@ body {
 }
 
 .wrapper .sidebar ul {
-  margin-top: 22%;
+  margin-top: 35px; 
 }
 
 .wrapper .sidebar ul li a {
@@ -71,6 +71,14 @@ body {
     text-align: center;
     float: none;
   }
+  .wrapper .sidebar ul{
+    margin-top: 0px;
+  }
+  .wrapper .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
   div.content {
     margin-left: 0;
     position: relative;
@@ -78,7 +86,7 @@ body {
   }
 }
 
-@media screen and (max-width: 411px) {
+/* @media screen and (max-width: 411px) {
   .wrapper .sidebar {
     width: 100%;
     height: auto;
@@ -88,4 +96,4 @@ body {
     float: left;
   }
   
-}
+} */
