@@ -25,16 +25,16 @@ export const SideBar = (props) => {
                         </li>
 
                         <li>
-                            <NavLink to="/add-property" activeClassName="sidebarActive">
+                            <NavLink to="/addStudent" activeClassName="sidebarActive">
                                 <span className="icon"><i className="fas fa-plus"></i></span>
-                                <span className="item">Add Properties</span>
+                                <span className="item">Add Student</span>
                             </NavLink>
                         </li>
 
                         <li>
-                            <NavLink to="/view-property" activeClassName="sidebarActive">
+                            <NavLink to="/studentList" activeClassName="sidebarActive">
                                 <span className="icon"><i className="fas fa-eye"></i></span>
-                                <span className="item">View Properties</span>
+                                <span className="item">View Students</span>
                             </NavLink>
                         </li>
                         <li>

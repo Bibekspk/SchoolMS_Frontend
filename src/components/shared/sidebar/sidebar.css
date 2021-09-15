@@ -23,6 +23,10 @@ body {
   transition: all 0.5s ease;
 }
 
+.content{
+  margin-left: 225px;
+}
+
 .wrapper .sidebar .profile {
   position: relative;
   left: -10%;
@@ -86,14 +90,3 @@ body {
   }
 }
 
-/* @media screen and (max-width: 411px) {
-  .wrapper .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-   .sidebar a {
-    float: left;
-  }
-  
-} */
