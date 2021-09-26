@@ -10,11 +10,9 @@ export const SideBar = (props) => {
                 <div className="sidebar">
                     <div className="profile">
                         {/* {JSON.parse(localStorage.getItem('user')).gender === 'male' && <img src={maleimg} height="25vh" alt="cannot display " width="100%"></img>}
-                        {JSON.parse(localStorage.getItem('user')).gender !== 'male' && <img src={femaleimg} height="30vh" alt="cannot display " width="100%"></img>}
-                        <h4>{JSON.parse(localStorage.getItem('user')).fullname}</h4> */}
+                        {JSON.parse(localStorage.getItem('user')).gender !== 'male' && <img src={femaleimg} height="30vh" alt="cannot display " width="100%"></img>} */}
+                        <h4>{JSON.parse(localStorage.getItem('user')).fullname}</h4> 
                     </div>
-                    {/* <!--profile image & text--> */}
-                    {/* <!--menu item--> */}
                     <ul>
                         <li>
 

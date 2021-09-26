@@ -66,6 +66,9 @@ body {
   background-color: brown;
 }
 
+.content{
+  margin-left: 255px;
+}
 @media screen and (max-width: 411px) {
   .wrapper .sidebar a {
     text-align: center;
@@ -79,21 +82,10 @@ body {
     height: auto;
     position: relative;
   }
-  div.content {
+  .content {
     margin-left: 0;
     position: relative;
     top: 0%;
   }
 }
 
-/* @media screen and (max-width: 411px) {
-  .wrapper .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-   .sidebar a {
-    float: left;
-  }
-  
-} */
