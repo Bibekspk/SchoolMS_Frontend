@@ -8,9 +8,10 @@ const defaultForm = {
     mail: "",
     fathersName: "",
     mothersName: "",
-    contact: "",
+    std: "",
     gender: "",
-    dob: ""
+    dob: "",
+    contact: ""
 }
 
 export class StudentsForm extends Component {
@@ -36,7 +37,8 @@ export class StudentsForm extends Component {
                     ...studentData,
                     fathersName: studentData.parentName ? studentData.parentName.fathername : "",
                     mothersName: studentData.parentName ? studentData.parentName.mothername : "",
-                    dob :  studentData.DOB ? DateFormatter(studentData.DOB) : ""
+                    dob :  studentData.DOB ? DateFormatter(studentData.DOB) : "",
+                    std : studentData.class ? studentData.class : ""
                 }
             }
             )
@@ -96,6 +98,23 @@ export class StudentsForm extends Component {
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Others">Others</option>
+                        </select>
+                        <label htmlFor="std">Class</label>
+                        <select className="form-control" name="std"  id="std" value={userDetails.std} onChange={this.handleChange} >
+                            <option value="">-Select Class-</option>
+                            <option value="Nursey">Nursey</option>
+                            <option value="LKG"> LKG</option>
+                            <option value="UKG"> UKG</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                         </select>
                         <label htmlFor="dob">Date of birth</label>
                         <input className="form-control" type="date" name="dob" value={userDetails.dob} placeholder="dob" onChange={this.handleChange} required></input>
