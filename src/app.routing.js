@@ -6,6 +6,7 @@ import { AddStudent } from './components/students/AddStudents/addStudents';
 import { NavBar } from './components/shared/navbar';
 import { EditStudents } from './components/students/editStudentsDetails/editStudentsDetails';
 import { SideBar } from './components/shared/sidebar/sidebar';
+import { Attendance } from './components/students/attendance/attendance';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
@@ -83,6 +84,7 @@ export const AppRouting = () => {
                 <AuthRoute path='/register' component={Register}></AuthRoute>
                 <ProtectedRoute path="/" exact component={Home}></ProtectedRoute>
                 <ProtectedRoute path="/studentList" component={StudentListComponent}></ProtectedRoute>
+                <ProtectedRoute path="/attendance" component={Attendance}></ProtectedRoute>
                 <ProtectedRoute path="/editStudent/:id" component={EditStudents}></ProtectedRoute>
                 <ProtectedRoute path="/addStudent" component={AddStudent}></ProtectedRoute>
                 <PublicRoute component={Error}></PublicRoute>

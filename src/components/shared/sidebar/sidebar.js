@@ -11,7 +11,7 @@ export const SideBar = (props) => {
                     <div className="profile">
                         {/* {JSON.parse(localStorage.getItem('user')).gender === 'male' && <img src={maleimg} height="25vh" alt="cannot display " width="100%"></img>}
                         {JSON.parse(localStorage.getItem('user')).gender !== 'male' && <img src={femaleimg} height="30vh" alt="cannot display " width="100%"></img>} */}
-                        <h4>{JSON.parse(localStorage.getItem('user')).fullname}</h4> 
+                        <h4 className="">{JSON.parse(localStorage.getItem('user')).fullname}</h4> 
                     </div>
                     <ul>
                         <li>
@@ -36,9 +36,9 @@ export const SideBar = (props) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/search-properties" activeClassName="sidebarActive">
+                            <NavLink to="/attendance" activeClassName="sidebarActive">
                                 <span className="icon"><i className="fas fa-search"></i></span>
-                                <span className="item">Search Properties</span>
+                                <span className="item">Class Attendance</span>
                             </NavLink>
                         </li>
                         <li>

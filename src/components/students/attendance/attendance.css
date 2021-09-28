@@ -1,0 +1,17 @@
+.attendance .attendanceForm {
+    display: flex;
+}
+
+.attendance #class{
+    width: 100%;
+}
+
+.attendance .btn{
+    width:25%;
+    margin-left: 5%;
+    margin-right: 3%;
+}
+
+.tablediv{
+    overflow-x: auto;
+}
