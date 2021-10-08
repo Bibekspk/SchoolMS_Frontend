@@ -6,12 +6,32 @@
     width: 100%;
 }
 
-.attendance .btn{
-    width:25%;
-    margin-left: 5%;
-    margin-right: 3%;
-}
-
 .tablediv{
     overflow-x: auto;
+    height: 450px;
+    overflow-y: scroll;
 }
+.attendance .tablediv h2{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 900;
+    color: darkblue;
+}
+
+.tablediv th{
+    position: sticky;
+    top: 0%;
+    background-color: black;
+    color: white;
+}
+
+.attendance .btn{
+    width: 20%;
+}
+
+.attendance td,label,option,select,button{
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: 600;
+}
+

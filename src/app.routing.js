@@ -7,6 +7,7 @@ import { NavBar } from './components/shared/navbar';
 import { EditStudents } from './components/students/editStudentsDetails/editStudentsDetails';
 import { SideBar } from './components/shared/sidebar/sidebar';
 import { Attendance } from './components/students/attendance/attendance';
+import history from './history.js';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
@@ -22,7 +23,8 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
                           <Component {...routeProps}></Component>                              
                           </SideBar>
                         </div>
-                        : <Redirect to='/login' ></Redirect>
+                        :
+                         <Redirect to='/'></Redirect>
                 )
             }}
         ></Route>
@@ -78,7 +80,7 @@ const Error =()=>{
 
 export const AppRouting = () => {
     return (
-        <BrowserRouter >
+        <BrowserRouter history ={history}>
             <Switch>
                 <AuthRoute path='/login'  component={Login}></AuthRoute>
                 <AuthRoute path='/register' component={Register}></AuthRoute>

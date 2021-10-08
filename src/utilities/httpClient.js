@@ -1,4 +1,5 @@
 import axios from "axios";
+import history from '../history';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -8,6 +9,21 @@ const http = axios.create({
     timeout: 20000,
     timeoutErrorMessage: "Server timed out"
 })
+
+http.interceptors.response.use(function (response) {
+    return response;
+}, function (error) {
+    if (error.response.data.msg === "Token is invalid or expired") {
+        localStorage.clear();
+        logout();
+    }
+});
+
+const logout = () => {
+    history.push('/login');
+    history.go(0); //it loads specific url from history list
+    // if 0 is placed then it reloads current url which is '/login'
+}
 
 const getHeaders = (isSecured) => {
     let options = {
@@ -32,16 +48,17 @@ const POST = (url, data, isSecured = false, params = {}) => {
     }
     )
 }
-const PUT = (url, data, isSecured = false,params={})=>{
-    return http.put(url,data,{
+const PUT = (url, data, isSecured = false, params = {}) => {
+    return http.put(url, data, {
         headers: getHeaders(isSecured)
     })
 }
-const DELETE = (url, isSecured = false, params={})=>{
-    return http.put(url,{
+const DELETE = (url, isSecured = false, params = {}) => {
+    return http.put(url, {
         headers: getHeaders(isSecured)
     })
 }
+
 export const httpClient = {
-    GET,POST,PUT,DELETE
+    GET, POST, PUT, DELETE
 }

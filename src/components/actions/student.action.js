@@ -1,5 +1,6 @@
 
 import { httpClient } from "../../utilities/httpClient";
+import { toast } from "react-toastify";
 
 export const StudentConstants = {
     
@@ -51,10 +52,12 @@ export const GetStudent=(params={})=>dispatch=>{
     httpClient.GET('/student/students',true,params)
         .then((response)=>{
             dispatch(getStudentsSuccess(response.data.students))
+            return true;
         })
         .catch((error)=>{
             console.log("error",error);
             dispatch(getstudentsFailure(error.data))
+            return false;
         })
 }
 
@@ -82,5 +85,18 @@ export const GetOneStudent=(id,history)=>dispatch=>{
         })
         .catch((error)=>{
             dispatch(getOneStudentsFailure(error.data))
+        })
+}
+
+export const AddAttendance=(data)=>dispatch=>{
+    dispatch(isLoading());
+    httpClient.POST('/student/attendance',data,true)
+        .then((response)=>{
+            // toast.dismiss(toastLoading);
+            toast.success("Attendance Submitted successfully");
+            console.log(response);
+        })
+        .catch((error)=>{
+            console.log(error);
         })
 }

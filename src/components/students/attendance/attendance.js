@@ -1,7 +1,9 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { GetStudent } from "../../actions/student.action";
-import './attendance.css'
+import { toast } from "react-toastify";
+import { AddAttendance, GetStudent } from "../../actions/student.action";
+import './attendance.css';
+
 
 class AttendanceComponent extends Component {
     constructor(props) {
@@ -30,7 +32,6 @@ class AttendanceComponent extends Component {
                     status: value
                 }
             }), () => {
-                console.log(this.state.studentData)
                 this.handleAttendance(this.state.studentData);
             })
         }
@@ -60,24 +61,31 @@ class AttendanceComponent extends Component {
                     this.state.attendance.splice(index, 1);
                 }
             }
-            console.log(this.state.attendance)
         })
         
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = (e,type) => {
         e.preventDefault();
-        this.props.getStudents(this.state);
-        this.setState({
-            class: ""
-        })
+        this.props.getStudents({class:this.state.class});
+        
+        if(type==="submit"){
+            console.log("stde",this.props.studentList)
+            console.log("att",this.state.attendance)
+            if(this.state.attendance.length !== this.props.studentList.length){
+                toast.error("Please provide attendace of all the students");
+                return
+            }
+            this.props.attendance(this.state.attendance)
+               
+        }
     }
     render() {
         return (
             <div className="attendance">
                 <h2>Attendance</h2>
                 <form className="attendanceForm" onSubmit={this.handleSubmit}>
-                    <select name="class" id="class" value={this.state.class} onChange={this.handleChange}>
+                    <select name="class" id="class" value={this.state.class} onChange={this.handleChange} required>
                         <option value="">-Select Class-</option>
                         <option value="Nursey"> Nursey</option>
                         <option value="LKG"> LKG</option>
@@ -93,16 +101,16 @@ class AttendanceComponent extends Component {
                         <option value="9"> 9</option>
                         <option value="10"> 10</option>
                     </select>
-                    <button className="btn btn-primary float-right">Get Students</button>
+                    <button className="btn btn-primary float-right ml-2 mr-4">Get Students</button>
                 </form>
                 <br />
-                <div className="tablediv">
+                <div className="tablediv mr-2">
                     <table className="table table-striped">
                         <thead>
                             <tr>
                                 <th className="text-center">SN</th>
                                 <th className="text-center">Student Name</th>
-                                <th className="text-center">Attendance</th>
+                                <th className="text-center">Attendance Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -112,9 +120,9 @@ class AttendanceComponent extends Component {
                                         <td className="text-center">{index + 1}</td>
                                         <td className="text-center">{student.fullname}</td>
                                         <td className="text-center">
-                                            <div onChange={(e) => this.handleChange(e, student)}>
-                                                <input type="radio" name={student.fullname} value="Present"></input><label>&nbsp;Present&nbsp;</label>
-                                                <input type="radio" name={student.fullname} value="Absent"></input><label>&nbsp;Absent&nbsp;</label>
+                                            <div onChange={(e) => this.handleChange(e, student)} >
+                                                <input type="radio" id={`present-${student._id}`} name={student._id} value="Present"></input><label htmlFor={`present-${student._id}`}>&nbsp;Present&nbsp;&nbsp;&nbsp;</label>
+                                                <input type="radio" id={`absent-${student._id}`} name={student._id} value="Absent"></input><label htmlFor={`absent-${student._id}`}>&nbsp;Absent&nbsp;&nbsp;&nbsp;</label>
                                             </div>
                                         </td>
                                     </tr>
@@ -123,18 +131,27 @@ class AttendanceComponent extends Component {
 
                         </tbody>
                     </table>
+                  
+                    
                 </div>
-            </div >
+                {
+                        this.props.studentList.length ?
+                    <button disabled={this.props.isLoading} onClick={(e)=>this.handleSubmit(e,"submit")} className="btn btn-primary float-left mb-3 mt-2">{this.props.isLoading ? "Submitting" : "Submit"}</button> : null
+
+                    }
+            </div>
         )
     }
 }
 
 const MapStateToProps = (rootState) => ({
-    studentList: rootState.students.students
+    studentList: rootState.students.students,
+    isLoading : rootState.students.isLoading
 })
 
 const MapDispatchToProps = (dispatch) => ({
-    getStudents: (data) => dispatch(GetStudent(data))
+    getStudents: (data) => dispatch(GetStudent(data)),
+    attendance : (data) => dispatch(AddAttendance(data))
 })
 
 export const Attendance = connect(MapStateToProps, MapDispatchToProps)(AttendanceComponent)
