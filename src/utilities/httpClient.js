@@ -11,8 +11,9 @@ const http = axios.create({
 })
 
 http.interceptors.response.use(function (response) {
-    return response;
-}, function (error) {
+    return response; // return response if no error occurs
+}, function (error) { // if error occurs then clearing localstorage and then redirecting to login page 
+    
     if (error.response.data.msg === "Token is invalid or expired") {
         localStorage.clear();
         logout();
