@@ -36,7 +36,7 @@ export const LoginAction = (data,props) => dispatch => {
             localStorage.setItem("user",JSON.stringify(response.data.user))
             localStorage.setItem("token",response.data.token)
             dispatch(loginSucess(response.data.user));
-            props.history.push('/');
+            props.history.push('/home');
 
         })
         .catch((err) => {

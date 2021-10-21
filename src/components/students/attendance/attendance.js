@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
+import { DateFormatter } from "../../../utilities/dateFormatter";
 import { AddAttendance, GetStudent } from "../../actions/student.action";
 import './attendance.css';
 
@@ -10,11 +11,13 @@ class AttendanceComponent extends Component {
         super(props)
         this.state = {
             class: "",
+            date: "",
             attendance: [],
             studentData: {
                 student: "",
                 status: "",
-                naem: ""
+                name: "",
+                date : ""
             }
         }
     }
@@ -22,14 +25,14 @@ class AttendanceComponent extends Component {
 
     handleChange = (e, student) => {
         const { name, value, type } = e.target;
-        const { studentData, attendance } = this.state;
         if (type === "radio") {
             this.setState((prevState) => ({
                 ...prevState,
                 studentData: {
                     student: student._id,
                     name: student.fullname,
-                    status: value
+                    status: value,
+                    date : DateFormatter(this.state.date)
                 }
             }), () => {
                 this.handleAttendance(this.state.studentData);
@@ -68,10 +71,11 @@ class AttendanceComponent extends Component {
     handleSubmit = (e,type) => {
         e.preventDefault();
         this.props.getStudents({class:this.state.class});
-        
         if(type==="submit"){
-            console.log("stde",this.props.studentList)
-            console.log("att",this.state.attendance)
+            if(!this.state.date){
+                toast.error("Please select date");
+                return
+            }  
             if(this.state.attendance.length !== this.props.studentList.length){
                 toast.error("Please provide attendace of all the students");
                 return
@@ -81,6 +85,7 @@ class AttendanceComponent extends Component {
         }
     }
     render() {
+        console.log(this.state)
         return (
             <div className="attendance">
                 <h2>Attendance</h2>
@@ -101,6 +106,8 @@ class AttendanceComponent extends Component {
                         <option value="9"> 9</option>
                         <option value="10"> 10</option>
                     </select>
+                    
+                    <input type= "date" name="date" value={this.state.date} onChange={this.handleChange} id="date"></input>
                     <button className="btn btn-primary float-right ml-2 mr-4">Get Students</button>
                 </form>
                 <br />

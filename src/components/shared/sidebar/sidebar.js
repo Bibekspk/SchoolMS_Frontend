@@ -16,7 +16,7 @@ export const SideBar = (props) => {
                     <ul>
                         <li>
 
-                            <NavLink to="/" exact activeClassName="sidebarActive">
+                            <NavLink to="/home" exact activeClassName="sidebarActive">
                                 <span className="icon"><i className="fas fa-home"></i></span>
                                 <span className="item">Home</span>
                             </NavLink>

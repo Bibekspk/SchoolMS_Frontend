@@ -82,9 +82,9 @@ export const AppRouting = () => {
     return (
         <BrowserRouter history ={history}>
             <Switch>
-                <AuthRoute path='/login'  component={Login}></AuthRoute>
+                <AuthRoute path='/' exact  component={Login}></AuthRoute>
                 <AuthRoute path='/register' component={Register}></AuthRoute>
-                <ProtectedRoute path="/" exact component={Home}></ProtectedRoute>
+                <ProtectedRoute path="/home" component={Home}></ProtectedRoute>
                 <ProtectedRoute path="/studentList" component={StudentListComponent}></ProtectedRoute>
                 <ProtectedRoute path="/attendance" component={Attendance}></ProtectedRoute>
                 <ProtectedRoute path="/editStudent/:id" component={EditStudents}></ProtectedRoute>

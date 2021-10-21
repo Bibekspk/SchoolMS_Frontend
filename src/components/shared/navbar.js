@@ -5,12 +5,12 @@ import { withRouter } from 'react-router-dom';
 
 const handleLogin = (props) => {
     console.log(props);
-    props.history.push('/login')
+    props.history.push('/')
 
 }
 const handleLogout = (props) => {
     localStorage.clear();
-    props.history.push('/login')
+    props.history.push('/')
 }
 
 const handleRegister = (props) => {
