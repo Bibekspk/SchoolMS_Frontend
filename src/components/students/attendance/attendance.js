@@ -25,7 +25,9 @@ class AttendanceComponent extends Component {
 
     handleChange = (e, student) => {
         const { name, value, type } = e.target;
+       
         if (type === "radio") {
+           
             this.setState((prevState) => ({
                 ...prevState,
                 studentData: {
@@ -41,21 +43,23 @@ class AttendanceComponent extends Component {
         this.setState({
             [name]: value
         })
+       
     }
 
     handleAttendance = (studentData) => {
+       
 
         this.state.attendance.push(studentData); // in radiobutton we cannot add same value twice.
         //so the duplicate value of same user and same attendance wont be a problem
         this.state.attendance.forEach((studentAtt) => {
             // i am using array > 1 because if not then every time studentAtt(arryaitem) 
-            // and studentData(input) will be same and array will be spliced.
+            // and studentData(input) will be same and array will be spliced. first value is same so
             if (this.state.attendance.length > 1 && studentData.student === studentAtt.student) {
                 //yedi student equal navaye add huncha remove hunna value
                 if (studentData.status !== studentAtt.status) {
                     //we are checking if student is same then we check if the attendance is different
                     // if it is different then we remove earlier value and and only keep new value 
-                    //as done in line 44.
+                
                     let index = this.state.attendance.indexOf(studentAtt)
                     // we are taking index of earlier value of student 
                     //kinaki student equal vayesi and status unequal vayesi old 0 ma bascha new 1 ma bascha 
@@ -70,6 +74,10 @@ class AttendanceComponent extends Component {
 
     handleSubmit = (e,type) => {
         e.preventDefault();
+        if(!this.state.date){
+            window.alert("Please select date of attendance before getting students !!");
+            return
+        }
         this.props.getStudents({class:this.state.class});
         if(type==="submit"){
             if(!this.state.date){

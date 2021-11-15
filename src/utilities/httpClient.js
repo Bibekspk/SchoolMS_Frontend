@@ -23,7 +23,7 @@ http.interceptors.response.use(function (response) {
 const logout = () => {
     history.push('/');
     history.go(0); //it loads specific url from history list
-    // if 0 is placed then it reloads current url which is '/login'
+    // if 0 is placed then it reloads current url which is '/'
 }
 
 const getHeaders = (isSecured) => {
