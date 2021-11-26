@@ -10,11 +10,17 @@ export const StudentConstants = {
     ADDSTUDENT_FAILURE: "ADDSTUDENT_FAILURE",
     GETONESTUDENT_FAILURE: "GETONESTUDENT_FAILURE",
     EDIT_STUDENT_SUCCESS : "EDIT_STUDENT_SUCCESS",
-    EDIT_STUDENT_FAILURE : "EDIT_STUDENT_FAILURE" 
+    EDIT_STUDENT_FAILURE : "EDIT_STUDENT_FAILURE",
+    RESPONSE_STATUS : "RESPONSE_STATUS"
 }
 
 export const isLoading = () => ({
     type: StudentConstants.IS_LOADING
+})
+
+export const isSuccess =(data)=>({
+    type: StudentConstants.RESPONSE_STATUS,
+    payload : data
 })
 
 export const getStudentsSuccess =(data)=>({
@@ -93,10 +99,13 @@ export const AddAttendance=(data)=>dispatch=>{
     httpClient.POST('/student/attendance',data,true)
         .then((response)=>{
             // toast.dismiss(toastLoading);
+            dispatch(isSuccess(true));
             toast.success("Attendance Submitted successfully");
             console.log(response);
         })
         .catch((error)=>{
-            console.log(error);
+            dispatch(isSuccess(false))
+            toast.error(error);
+
         })
 }

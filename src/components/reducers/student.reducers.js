@@ -39,6 +39,13 @@ export const StudentReducers = (state, action) => {
                 student: action.payload,
                 isLoading: false
             }
+        case StudentConstants.RESPONSE_STATUS:
+            console.log(action.payload)
+            return {
+                ...state,
+                isLoading: false,
+                isSuccess : action.payload
+            }
         case StudentConstants.GETONESTUDENT_FAILURE:
             return {
                 ...state,

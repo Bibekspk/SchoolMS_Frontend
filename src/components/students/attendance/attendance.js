@@ -25,7 +25,16 @@ class AttendanceComponent extends Component {
 
     handleChange = (e, student) => {
         const { name, value, type } = e.target;
-       
+        if(name==="class"){
+            this.setState({
+                class: value
+            })
+        }
+        if(type==="date"){
+            this.setState({
+                date: value
+            })
+        }
         if (type === "radio") {
            
             this.setState((prevState) => ({
@@ -40,9 +49,9 @@ class AttendanceComponent extends Component {
                 this.handleAttendance(this.state.studentData);
             })
         }
-        this.setState({
-            [name]: value
-        })
+        // this.setState({
+        //     [name]: value
+        // })
        
     }
 
@@ -88,7 +97,14 @@ class AttendanceComponent extends Component {
                 toast.error("Please provide attendace of all the students");
                 return
             }
-            this.props.attendance(this.state.attendance)
+            this.props.attendance(this.state.attendance);   
+            if(this.props.isSuccess){
+                console.log(this.props.isSuccess);
+                this.setState({
+                    attendance: []
+                })
+                console.log(this.state.attendance)
+            }        
                
         }
     }
@@ -97,7 +113,7 @@ class AttendanceComponent extends Component {
         return (
             <div className="attendance">
                 <h2>Attendance</h2>
-                <form className="attendanceForm" onSubmit={this.handleSubmit}>
+                <form id="attendanceForm" className="attendanceForm" onSubmit={this.handleSubmit}>
                     <select name="class" id="class" value={this.state.class} onChange={this.handleChange} required>
                         <option value="">-Select Class-</option>
                         <option value="Nursey"> Nursey</option>
@@ -135,7 +151,7 @@ class AttendanceComponent extends Component {
                                         <td className="text-center">{index + 1}</td>
                                         <td className="text-center">{student.fullname}</td>
                                         <td className="text-center">
-                                            <div onChange={(e) => this.handleChange(e, student)} >
+                                        <div  onChange={(e) => this.handleChange(e, student)} >
                                                 <input type="radio" id={`present-${student._id}`} name={student._id} value="Present"></input><label htmlFor={`present-${student._id}`}>&nbsp;Present&nbsp;&nbsp;&nbsp;</label>
                                                 <input type="radio" id={`absent-${student._id}`} name={student._id} value="Absent"></input><label htmlFor={`absent-${student._id}`}>&nbsp;Absent&nbsp;&nbsp;&nbsp;</label>
                                             </div>
@@ -143,7 +159,6 @@ class AttendanceComponent extends Component {
                                     </tr>
                                 ))
                             }
-
                         </tbody>
                     </table>
                   
@@ -161,7 +176,8 @@ class AttendanceComponent extends Component {
 
 const MapStateToProps = (rootState) => ({
     studentList: rootState.students.students,
-    isLoading : rootState.students.isLoading
+    isLoading : rootState.students.isLoading,
+    isSuccess : rootState.students.isSuccess
 })
 
 const MapDispatchToProps = (dispatch) => ({
