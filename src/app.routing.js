@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import { Login } from './components/auth/login/login';
 import { Register } from './components/auth/register/register'
 import { StudentListComponent } from './components/students/studentList/student.component';
@@ -80,7 +80,7 @@ const Error =()=>{
 
 export const AppRouting = () => {
     return (
-        <BrowserRouter history ={history}>
+        <Router history ={history}>
             <Switch>
                 <AuthRoute path='/' exact  component={Login}></AuthRoute>
                 <AuthRoute path='/register' component={Register}></AuthRoute>
@@ -92,6 +92,6 @@ export const AppRouting = () => {
                 <PublicRoute component={Error}></PublicRoute>
                 
             </Switch>
-        </BrowserRouter>
+        </Router>
     )
 }

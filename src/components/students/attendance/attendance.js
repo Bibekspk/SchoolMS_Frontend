@@ -2,7 +2,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import { DateFormatter } from "../../../utilities/dateFormatter";
-import { AddAttendance, GetStudent } from "../../actions/student.action";
+import { AddAttendance, clearStudentList, GetStudent } from "../../actions/student.action";
 import './attendance.css';
 
 
@@ -12,6 +12,7 @@ class AttendanceComponent extends Component {
         this.state = {
             class: "",
             date: "",
+            students:[],
             attendance: [],
             studentData: {
                 student: "",
@@ -21,7 +22,13 @@ class AttendanceComponent extends Component {
             }
         }
     }
-
+    componentDidMount=()=>{
+       this.props.clearList();
+       this.setState((prevState)=>({
+           ...prevState,
+           attendance: []
+       }))
+    }
 
     handleChange = (e, student) => {
         const { name, value, type } = e.target;
@@ -49,10 +56,7 @@ class AttendanceComponent extends Component {
                 this.handleAttendance(this.state.studentData);
             })
         }
-        // this.setState({
-        //     [name]: value
-        // })
-       
+        
     }
 
     handleAttendance = (studentData) => {
@@ -76,6 +80,10 @@ class AttendanceComponent extends Component {
                     // ani teslai remove gardinchau 
                     this.state.attendance.splice(index, 1);
                 }
+                // if(studentData.status === studentAtt.status){
+                //     let index = this.state.attendance.indexOf(studentAtt);
+                //     this.state.attendance.splice(index,1)
+                // }
             }
         })
         
@@ -94,17 +102,18 @@ class AttendanceComponent extends Component {
                 return
             }  
             if(this.state.attendance.length !== this.props.studentList.length){
-                toast.error("Please provide attendace of all the students");
+                toast.error("Please provide attendance of all the students");
                 return
             }
-            this.props.attendance(this.state.attendance);   
+            this.props.attendance(this.state.attendance);
             if(this.props.isSuccess){
-                console.log(this.props.isSuccess);
-                this.setState({
+                 this.props.clearList();
+                 this.setState((prevState)=>({
+                    ...prevState,
                     attendance: []
-                })
-                console.log(this.state.attendance)
-            }        
+                })) 
+            }
+                  
                
         }
     }
@@ -145,6 +154,7 @@ class AttendanceComponent extends Component {
                             </tr>
                         </thead>
                         <tbody>
+                        
                             {this.props.studentList.length &&
                                 this.props.studentList.map((student, index) => (
                                     <tr key={index}>
@@ -160,6 +170,7 @@ class AttendanceComponent extends Component {
                                 ))
                             }
                         </tbody>
+                       
                     </table>
                   
                     
@@ -182,7 +193,8 @@ const MapStateToProps = (rootState) => ({
 
 const MapDispatchToProps = (dispatch) => ({
     getStudents: (data) => dispatch(GetStudent(data)),
-    attendance : (data) => dispatch(AddAttendance(data))
+    attendance : (data) => dispatch(AddAttendance(data)),
+    clearList : () => dispatch(clearStudentList())
 })
 
 export const Attendance = connect(MapStateToProps, MapDispatchToProps)(AttendanceComponent)

@@ -41,11 +41,24 @@ export const StudentReducers = (state, action) => {
             }
         case StudentConstants.RESPONSE_STATUS:
             console.log(action.payload)
-            return {
+            if(action.payload){ // true huda students clear garni kinaki submit vai sakyo
+                // radio button ko prbloem jun unselect nahuni vyera yo use garya 
+               return {
                 ...state,
                 isLoading: false,
-                isSuccess : action.payload
+                isSuccess : true,
+                students: []
+               }
             }
+            else{
+                return {
+                    ...state,
+                    isLoading: false,
+                    isSuccess: false,
+                    
+                }
+            }
+           
         case StudentConstants.GETONESTUDENT_FAILURE:
             return {
                 ...state,

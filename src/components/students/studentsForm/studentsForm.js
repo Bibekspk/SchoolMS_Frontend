@@ -60,14 +60,16 @@ export class StudentsForm extends Component {
         if (this.props.mode === "Edit") {
             this.props.EditData(this.state.userDetails)
         }
-        e.preventDefault()
-        httpClient.POST('/student/addStudent', this.state.userDetails, true)
-            .then((response) => {
-                console.log("response>>>", response)
-            })
-            .catch((error) => {
-                console.log("error>>>", error)
-            })
+        else{
+            e.preventDefault()
+            httpClient.POST('/student/addStudent', this.state.userDetails, true)
+                .then((response) => {
+                    console.log("response>>>", response)
+                })
+                .catch((error) => {
+                    console.log("error>>>", error)
+                })
+        }
     }
 
     render() {

@@ -58,12 +58,10 @@ export const GetStudent=(params={})=>dispatch=>{
     httpClient.GET('/student/students',true,params)
         .then((response)=>{
             dispatch(getStudentsSuccess(response.data.students))
-            return true;
         })
         .catch((error)=>{
             console.log("error",error);
             dispatch(getstudentsFailure(error.data))
-            return false;
         })
 }
 
@@ -73,7 +71,7 @@ export const EditStudent=(data,id,history)=>dispatch=>{
     httpClient.POST(`student/editStudent/${id}`,data,true)
         .then((response)=>{
             dispatch(editStudentsuccess(response.data.student))
-            history.push('/studentList')
+            history.push('/studentList');
         })
         .catch((error)=>{
             console.log("error",error)
@@ -108,4 +106,9 @@ export const AddAttendance=(data)=>dispatch=>{
             toast.error(error);
 
         })
+}
+
+export const clearStudentList=()=>dispatch=>{
+    dispatch(isLoading());
+    dispatch(isSuccess(true));
 }
