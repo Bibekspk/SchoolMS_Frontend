@@ -80,10 +80,7 @@ class AttendanceComponent extends Component {
                     // ani teslai remove gardinchau 
                     this.state.attendance.splice(index, 1);
                 }
-                // if(studentData.status === studentAtt.status){
-                //     let index = this.state.attendance.indexOf(studentAtt);
-                //     this.state.attendance.splice(index,1)
-                // }
+                
             }
         })
         

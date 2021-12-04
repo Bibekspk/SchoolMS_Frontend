@@ -54,8 +54,7 @@ export const StudentReducers = (state, action) => {
                 return {
                     ...state,
                     isLoading: false,
-                    isSuccess: false,
-                    
+                    isSuccess: false,     
                 }
             }
            
