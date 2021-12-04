@@ -81,11 +81,11 @@ export const EditStudent=(data,id,history)=>dispatch=>{
 
 export const GetOneStudent=(id,history)=>dispatch=>{
     dispatch(isLoading());
-    httpClient.GET(`/student/edit/${id}`,true,null)
+    httpClient.GET(`/student/studentInfo/${id}`,true,null)
         .then((response)=>{
             console.log(response);
             dispatch(getOneStudentsSuccess(response.data.student))
-            history.push(`/editStudent/${id}`)
+            // history.push(`/editStudent/${id}`)
         })
         .catch((error)=>{
             dispatch(getOneStudentsFailure(error.data))

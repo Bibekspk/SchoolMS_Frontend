@@ -8,6 +8,7 @@ import { EditStudents } from './components/students/editStudentsDetails/editStud
 import { SideBar } from './components/shared/sidebar/sidebar';
 import { Attendance } from './components/students/attendance/attendance';
 import history from './history.js';
+import {studentDetails} from './components/students/studentDetail/studentDetails';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
@@ -89,6 +90,7 @@ export const AppRouting = () => {
                 <ProtectedRoute path="/attendance" component={Attendance}></ProtectedRoute>
                 <ProtectedRoute path="/editStudent/:id" component={EditStudents}></ProtectedRoute>
                 <ProtectedRoute path="/addStudent" component={AddStudent}></ProtectedRoute>
+                <ProtectedRoute path="/studentDetail/:id" component={studentDetails}></ProtectedRoute>
                 <PublicRoute component={Error}></PublicRoute>
                 
             </Switch>

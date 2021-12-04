@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './student.component.css'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { GetOneStudent, GetStudent } from '../../actions/student.action';
 
 const form = {
@@ -119,7 +120,7 @@ export class Studentcomponent extends Component {
                                         { !this.props.isLoading &&
                                             (studentList || []).map((student, index) => (
                                                 <tr key={index}>
-                                                    <td className="text-center">{student.fullname}</td>
+                                                    <td className="text-center"><Link to={`studentDetail/${student._id}`}>{student.fullname}</Link></td>
                                                     <td className="text-center">{student.class}</td>
                                                     <td className="text-center">{student.contact}</td>
                                                     <td className="text-center">{student.address}</td>
